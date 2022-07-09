@@ -1,0 +1,8 @@
+.v-btn {
+  &:not(.v-btn--round).v-size--default {
+    height: 48px;
+    min-width: 343px;
+    padding: 0 16px;
+    border-radius: 10px;
+  }
+}

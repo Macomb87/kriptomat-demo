@@ -1,32 +1,46 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-container>
+      <v-app-bar
+          height="90px"
+          elevation="0"
+          app
+          color="primary"
+      >
+        <div class="d-flex align-center">
+          <img src="./assets/logo.svg" alt="kriptomat_logo" class="v-responsive">
+        </div>
+
+        <v-spacer></v-spacer>
+
+        <v-btn class="custom-button" color="secondary">
+          <span class="mr-2">Kriptomat account</span>
+
+        </v-btn>
+      </v-app-bar>
+
+      <v-main>
+        <router-view/>
+      </v-main>
+    </v-container>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-}
+import ButtonComponent from "@/components/ButtonComponent";
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+  name: 'App',
+  components: [
+    ButtonComponent
+  ],
+  data: () => ({
+    //
+  }),
+};
+</script>
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style lang="scss">
+@import "style";
 </style>
