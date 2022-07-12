@@ -40,6 +40,7 @@
           <v-spacer></v-spacer>
           <v-text-field
               outlined
+              solo-inverted
               class="custom-input-colors"
               v-model="search"
               prepend-inner-icon="mdi-magnify"
