@@ -1,3 +1,31 @@
+@import url('http://fonts.cdnfonts.com/css/montserrat');
+
+$font-family: 'Montserrat';
+
+.v-application {
+  [class*="text-"] {
+    color: #36405a;
+    font-family: $font-family, sans-serif !important;
+  }
+
+  font-family: $font-family, sans-serif !important;
+
+  p {
+    font-size: 16px;
+    margin: 0px;
+  }
+
+  .primary--text {
+    color: #2F314B !important;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+    .v-main{
+      padding: 0 !important;
+    }
+}
+
 .v-btn {
   &:not(.v-btn--round).v-size--default {
     height: 48px;
@@ -6,3 +34,23 @@
     border-radius: 10px;
   }
 }
+
+.mobile-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.rounded-card {
+  border-radius: 20px;
+}
+
+.v-list-item__action--stack {
+  justify-content: center !important;
+}
+
+

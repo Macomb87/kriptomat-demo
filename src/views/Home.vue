@@ -1,18 +1,19 @@
 <template>
-  <chart-component></chart-component>
+    <CryptoCurrencyTable></CryptoCurrencyTable>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-import ChartComponent from "@/components/ChartComponent";
+import CryptoCurrencyTable from "@/components/CryptoCurrencyTable";
 
 export default {
   name: 'Home',
+  mounted() {
 
+  },
   components: {
-    HelloWorld,
-    ChartComponent
+    CryptoCurrencyTable,
+
   }
 }
 </script>
