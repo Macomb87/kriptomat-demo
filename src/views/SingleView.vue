@@ -32,10 +32,7 @@
               label
               outlined>
             <v-avatar width="12" height="12" left>
-              <v-img v-if="bearMarket === true" class="arrow-image"
-                     max-height="12" max-width="12" src="../assets/small_arrow_down.png"></v-img>
-              <v-img v-else class="arrow-image"
-                     max-height="12" max-width="12" src="../assets/small_arrow_up.png"></v-img>
+              <daily-change-row :price_change_percentage="currency.price_change_percentage"></daily-change-row>
             </v-avatar>
             <p class="text"> {{
                 currency.price_change_percentage_24h_in_currency | fixedNumber
