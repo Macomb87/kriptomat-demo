@@ -4,13 +4,7 @@
       <v-text-field class="mx-3" flat label="Search" prepend-inner-icon="mdi-magnify" solo-inverted v-model="search"
                     clearable @click:clear="clearSearch"></v-text-field>
       <template v-for="item in filteredTasks">
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item>
-              Coin
-            </v-list-item>
-          </v-list-item-content>
-        </v-list-item>
+
         <v-list-item two-line :link="true" @click="openSingle(item)">
           <v-list-item-avatar>
             <v-img :src="item.image"></v-img>
