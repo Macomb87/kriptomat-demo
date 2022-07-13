@@ -4,12 +4,12 @@
       <single-mobile-component
           v-if="cryptoId"
           :cryptoId="cryptoId" :bear-market="bearMarket" :change-color="changeColor"
-                               :currency="currency"
-                               class="hidden-md-and-up"></single-mobile-component>
+          :currency="currency"
+          class="hidden-md-and-up"></single-mobile-component>
     </mobile-layout>
 
     <main-layout class="hidden-sm-and-down">
-      <single-component  v-if="cryptoId" :cryptoId="cryptoId" :bear-market="bearMarket" :change-color="changeColor"
+      <single-component v-if="cryptoId" :cryptoId="cryptoId" :bear-market="bearMarket" :change-color="changeColor"
                         :currency="currency"></single-component>
     </main-layout>
 
@@ -63,14 +63,19 @@ export default {
       this.loadCryptoCurrency();
     }
   },
+
   methods: {
     ...mapActions('currenciesStore', ["getCurrencyById"]),
+    ...mapActions('favoritesStore', ["getFavoriteById"]),
     goBack() {
       this.$router.back();
     },
 
     async loadCryptoCurrency() {
+
       this.currency = await this.getCurrencyById(this.cryptoId);
+      const isFavorite = await this.getFavoriteById(this.currency.id);
+      this.currency = {...this.currency, favorite: !!isFavorite}
       if (this.currency.price_change_percentage_24h_in_currency < 0) {
         this.bearMarket = true;
         this.changeColor = '#FF9696';

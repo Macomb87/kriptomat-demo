@@ -153,15 +153,14 @@ export default {
       await this.getAllCurrencies();
     },
     async toggleFavorite(item) {
-      console.log(await this.getFavoriteById(item.id));
       if (await this.getFavoriteById(item.id)) {
         await this.removeFavorites(item.id);
         item.favorite = false;
-        console.log(item);
+
       } else {
         await this.addFavorites(item)
         item.favorite = true;
-        console.log(item);
+
       }
     },
 
