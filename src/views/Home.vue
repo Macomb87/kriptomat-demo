@@ -22,9 +22,6 @@ export default {
   mounted() {
 
   },
-  methods: {
-    ...mapActions(['isMobile'])
-  },
   components: {
     MobileLayout,
     MobileTableComponent,
