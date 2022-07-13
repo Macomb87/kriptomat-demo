@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import SingleView from "@/views/SingleView";
-import Search from "@/views/search";
+
 
 Vue.use(VueRouter)
 
@@ -10,17 +8,18 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
     path: '/search',
     name: 'search',
-    component: Search
+    component: () => import(/* webpackChunkName: "search" */ '../views/Search.vue')
   },
   {
     path: '/:cryptoId',
     name: 'CryptoView',
-    component: SingleView
+    component: () => import(/* webpackChunkName: "singleView" */ '../views/SingleView.vue')
+
   },
 
 ]

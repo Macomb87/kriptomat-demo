@@ -6,22 +6,10 @@ import Currencies from "@/store/modules/cryptoCurencies";
 Vue.use(Vuex)
 export default new Vuex.Store({
     namespaced: true,
-    state: {
-        isMobile: false,
-    },
-    mutations: {
-        updateIsMobile: (state, isMobile) => state.isMobile = isMobile,
-    },
-    actions: {
-        checkIfMobile({commit}) {
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            console.log(isMobile);
-            commit('updateIsMobile', isMobile);
-        }
-    },
-    getters: {
-        isMobile: state => state.isMobile
-    },
+    state: {},
+    mutations: {},
+    actions: {},
+    getters: {},
     modules: {
         'favoritesStore': Favorites,
         'currenciesStore': Currencies

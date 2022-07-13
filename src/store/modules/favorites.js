@@ -6,6 +6,8 @@ const getters = {
 };
 const actions = {
     addFavorites({commit}, favorite) {
+        console.log('add favorite');
+        console.log(favorite);
         commit("addNewFavorite", favorite)
     },
     removeFavorites({commit}, favoriteId) {

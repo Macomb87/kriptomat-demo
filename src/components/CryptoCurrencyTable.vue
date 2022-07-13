@@ -1,49 +1,16 @@
 <template>
   <div>
-    <div class="hidden-md-and-up">
-      <v-text-field class="mx-3" flat label="Search" prepend-inner-icon="mdi-magnify" solo-inverted v-model="search"
-                    clearable @click:clear="clearSearch"></v-text-field>
-      <template v-for="item in filteredTasks">
-
-        <v-list-item two-line :link="true" @click="openSingle(item)">
-          <v-list-item-avatar>
-            <v-img :src="item.image"></v-img>
-          </v-list-item-avatar>
-          <v-list-item-content>
-            <v-list-item-title><strong>{{ item.name }}</strong></v-list-item-title>
-            <v-list-item-subtitle>{{ String(item.symbol).toUpperCase() }}</v-list-item-subtitle>
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-list-item-action-text><strong>€{{ item.current_price | fixedNumber }}</strong></v-list-item-action-text>
-            <v-list-item-action-text class="price_change percentage_down">
-              <daily-change-row
-                  :price_change_percentage="item.price_change_percentage_24h_in_currency"></daily-change-row>
-            </v-list-item-action-text>
-          </v-list-item-action>
-        </v-list-item>
-        <v-divider></v-divider>
-      </template>
-    </div>
-
-    <div class="set_padding hidden-sm-and-down">
+    <div class="set_padding">
       <v-card class="rounded-xl" color="primary" elevation="0">
         <v-card-title>
-          <h3 class="hidden-sm-and-down">
+          <h3>
             Cryptocurrency Prices
           </h3>
           <v-spacer></v-spacer>
-          <v-text-field
-              outlined
-              solo-inverted
-              class="custom-input-colors"
-              v-model="search"
-              prepend-inner-icon="mdi-magnify"
-              append-icon="mdi-close"
-              @click:append="clear"
-              label="Search"
-              single-line
-              hide-details
-          ></v-text-field>
+          <v-text-field class="custom-input-colors pl-0 pr-0" single-line flat label="Search"
+                        prepend-inner-icon="mdi-magnify" solo-inverted v-model="search"
+                        clearable @click:clear="clearSearch">
+          </v-text-field>
         </v-card-title>
         <v-data-table
             elevation="0"
@@ -58,7 +25,7 @@
               <v-img max-height="30" max-width="30" :src="item.image"></v-img>
               <div class="text">
 
-                <strong>{{ item.name }}</strong> <span class="symbol"> {{ String(item.symbol).toUpperCase() }}</span>
+                <strong>{{ item.name }}</strong> <span class="symbol"> {{ String(item.symbol)?.toUpperCase() }}</span>
               </div>
             </div>
           </template>
@@ -144,7 +111,7 @@
 
 </style>
 <script>
-import DailyChangeRow from "@/components/dailyChangeRow";
+import DailyChangeRow from "@/components/DailyChangeRow";
 import {mapActions, mapGetters} from "vuex";
 
 export default {
@@ -164,12 +131,12 @@ export default {
     filteredTasks() {
       //filter to only show items matching search string
       return this.cryptoCurrenciesList.filter(x => {
-        return x.name.toLowerCase().includes(this.search.toLowerCase())
+        return x.name?.toLowerCase().includes(this.search?.toLowerCase())
       });
     },
     cryptoCurrenciesArray() {
       return this.cryptoCurrenciesList.map(currency => {
-        return {...currency, favorite: false};
+        return {...currency, favorite: !!currency.favorite};
       })
     }
   },
@@ -186,12 +153,15 @@ export default {
       await this.getAllCurrencies();
     },
     async toggleFavorite(item) {
+      console.log(await this.getFavoriteById(item.id));
       if (await this.getFavoriteById(item.id)) {
         await this.removeFavorites(item.id);
         item.favorite = false;
+        console.log(item);
       } else {
         await this.addFavorites(item)
         item.favorite = true;
+        console.log(item);
       }
     },
 
@@ -207,9 +177,6 @@ export default {
     },
     handleClick(e) {
       this.$router.push({path: `/${e.id}`, replace: true})
-    },
-    clear() {
-      this.search = '';
     }
   },
   data() {

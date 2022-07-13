@@ -1,25 +1,27 @@
 <template>
   <div>
     <h3>Favorites</h3>
-    <template v-for="item in favoritesList">
-      <v-list-item two-line :link="true" @click="openSingle(item)">
-        <v-list-item-avatar>
-          <v-img :src="item.image"></v-img>
-        </v-list-item-avatar>
-        <v-list-item-content>
-          <v-list-item-title><strong>{{ item.name }}</strong></v-list-item-title>
-          <v-list-item-subtitle>{{ String(item.symbol).toUpperCase() }}</v-list-item-subtitle>
-        </v-list-item-content>
-        <v-list-item-action>
-          <v-list-item-action-text><strong>€{{ item.current_price | fixedNumber }}</strong></v-list-item-action-text>
-          <v-list-item-action-text class="price_change percentage_down">
-            <daily-change-row
-                :price_change_percentage="item.price_change_percentage_24h_in_currency"></daily-change-row>
-          </v-list-item-action-text>
-        </v-list-item-action>
-      </v-list-item>
-      <v-divider></v-divider>
-    </template>
+    <div class="pr-5 pl-5">
+      <template v-for="item in favoritesList">
+        <v-list-item two-line :link="true" @click="openSingle(item)">
+          <v-list-item-avatar>
+            <v-img :src="item.image"></v-img>
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title><strong>{{ item.name }}</strong></v-list-item-title>
+            <v-list-item-subtitle>{{ String(item.symbol).toUpperCase() }}</v-list-item-subtitle>
+          </v-list-item-content>
+          <v-list-item-action>
+            <v-list-item-action-text><strong>€{{ item.current_price | fixedNumber }}</strong></v-list-item-action-text>
+            <v-list-item-action-text class="price_change percentage_down">
+              <daily-change-row
+                  :price_change_percentage="item.price_change_percentage_24h_in_currency"></daily-change-row>
+            </v-list-item-action-text>
+          </v-list-item-action>
+        </v-list-item>
+        <v-divider></v-divider>
+      </template>
+    </div>
   </div>
 </template>
 

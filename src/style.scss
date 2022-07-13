@@ -12,18 +12,18 @@ $font-family: 'Montserrat';
 
   p {
     font-size: 16px;
-    margin: 0px;
+    margin: 0px !important;
   }
 
-  .primary--text {
-    color: #2F314B !important;
-  }
+  //.primary--text {
+  //  color: #2F314B !important;
+  //}
 }
 
 @media only screen and (max-width: 959px) {
-    .v-main{
-      padding: 0 !important;
-    }
+  .v-main {
+    padding: 0 !important;
+  }
 }
 
 .v-btn {
@@ -43,6 +43,7 @@ $font-family: 'Montserrat';
   justify-content: center;
   align-items: center;
   padding-top: 50px;
+  padding-bottom: 25px;
 }
 
 .rounded-card {
@@ -51,6 +52,10 @@ $font-family: 'Montserrat';
 
 .v-list-item__action--stack {
   justify-content: center !important;
+}
+
+.v-btn {
+  text-transform: unset !important;
 }
 
 
