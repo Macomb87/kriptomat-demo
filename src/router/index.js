@@ -23,7 +23,7 @@ const routes = [
   {
     path: '*',
     name: '404',
-    component: () => import(/* webpackChunkName: "singleView" */ '../views/404.vue')
+    component: () => import(/* webpackChunkName: "404" */ '../views/404.vue')
   },
 ]
 
