@@ -19,9 +19,12 @@ const routes = [
     path: '/:cryptoId',
     name: 'CryptoView',
     component: () => import(/* webpackChunkName: "singleView" */ '../views/SingleView.vue')
-
   },
-
+  {
+    path: '*',
+    name: '404',
+    component: () => import(/* webpackChunkName: "singleView" */ '../views/404.vue')
+  },
 ]
 
 const router = new VueRouter({
