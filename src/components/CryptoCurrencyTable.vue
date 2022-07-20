@@ -128,12 +128,6 @@ export default {
   computed: {
     ...mapGetters('favoritesStore', ['favoritesList']),
     ...mapGetters('currenciesStore', ['cryptoCurrenciesList']),
-    filteredTasks() {
-      //filter to only show items matching search string
-      return this.cryptoCurrenciesList.filter(x => {
-        return x.name?.toLowerCase().includes(this.search?.toLowerCase())
-      });
-    },
     cryptoCurrenciesArray() {
       return this.cryptoCurrenciesList.map(currency => {
         return {...currency, favorite: !!currency.favorite};
