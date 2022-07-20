@@ -23,7 +23,7 @@
         </v-list-item-action>
       </v-list-item>
     </v-list>
-    <template v-for="item in filteredTasks">
+    <template v-for="item in filteredCurrencies">
       <v-list-item two-line :link="true" @click="openSingle(item)">
         <v-list-item-avatar>
           <v-img :src="item.image"></v-img>
@@ -52,7 +52,7 @@ export default {
   name: "MobileTableComponent",
   computed: {
     ...mapGetters('currenciesStore', ['cryptoCurrenciesList']),
-    filteredTasks() {
+    filteredCurrencies() {
       //filter to only show items matching search string
       const filteredList = this.cryptoCurrenciesList.filter(x => {
         return x.name.toLowerCase().includes(this.search?.toLowerCase())
