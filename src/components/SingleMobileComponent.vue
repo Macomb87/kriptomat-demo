@@ -114,7 +114,7 @@ export default {
     async get1DayVolumen() {
       const startdate = moment();
       const volume = await coinGeckoService.getDailyVolume(this.cryptoId, startdate.subtract(1, 'day').unix(), moment().unix());
-      this.total1dayVolument = volume?.total_volumes[0][1];
+      this.total1dayVolume = volume?.total_volumes[0][1];
 
     },
     goBack() {
