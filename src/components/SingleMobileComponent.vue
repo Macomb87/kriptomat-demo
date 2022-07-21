@@ -24,22 +24,9 @@
         <v-list-item-title class="ml-2 mobile_currency_price"><h3>€ {{ currency.current_price }}</h3>
         </v-list-item-title>
       </v-list-item-content>
-      <v-list-item-action class="price_change ">
-
-        <v-chip
-            :color="changeColor"
-            label
-            outlined>
-          <v-avatar width="12" height="12" left>
-            <v-img v-if="bearMarket === true" class="arrow-image"
-                   max-height="12" max-width="12" src="../assets/small_arrow_down.png"></v-img>
-            <v-img v-else class="arrow-image"
-                   max-height="12" max-width="12" src="../assets/small_arrow_up.png"></v-img>
-          </v-avatar>
-          <p class="text"> {{
-              currency.price_change_percentage_24h_in_currency | fixedNumber
-            }}%</p>
-        </v-chip>
+      <v-list-item-action class="price_change">
+        <price-change-chip-component :bear-market="bearMarket" :price_change_percentage_24h_in_currency="currency.price_change_percentage_24h_in_currency"
+                              :color="changeColor"></price-change-chip-component>
       </v-list-item-action>
     </v-list-item>
     <v-list-item>
@@ -95,11 +82,13 @@
 import ChartComponent from "@/components/ChartComponent";
 import coinGeckoService from "@/services/coinGecko.service";
 import moment from "moment";
+import PriceChangeChipComponent from "@/components/PriceChangeChipComponent";
 
 export default {
   name: "SingleMobileComponent",
   props: ['currency', 'cryptoId', 'changeColor', 'bearMarket'],
   components: {
+    'price-change-chip-component': PriceChangeChipComponent,
     'chart-component': ChartComponent
   },
   data() {

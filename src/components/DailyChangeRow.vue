@@ -1,9 +1,11 @@
 <template>
   <div class="daily-change">
-    <v-img v-if="bearMarket === true" class="arrow-image"
-           max-height="10" max-width="10" src="../assets/small_arrow_down.png"></v-img>
-    <v-img v-if="bullMarket === true" class="arrow-image"
-           max-height="10" max-width="10" src="@/assets/small_arrow_up.png"></v-img>
+    <v-icon v-if="bearMarket === true" style="color:#FF9696">mdi-menu-down</v-icon>
+    <v-icon v-if="bullMarket === true" style="color:#0DEAA9">mdi-menu-up</v-icon>
+<!--    <v-img v-if="bearMarket === true" class="arrow-image"-->
+<!--           max-height="10" max-width="10" src="../assets/small_arrow_down.png"></v-img>-->
+<!--    <v-img v-if="bullMarket === true" class="arrow-image"-->
+<!--           max-height="10" max-width="10" src="@/assets/small_arrow_up.png"></v-img>-->
 
     <p :class="{'green-text': bullMarket,'red-text':bearMarket }">
       {{ parseFloat(price_change_percentage).toFixed(2) }}</p>
